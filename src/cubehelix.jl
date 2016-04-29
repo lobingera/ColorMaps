@@ -14,8 +14,9 @@ import Colors: RGB
 #  hue: saturation of hue -> 0.0 -> grayscale only, >1.0 -> clipping in some areas
 #  gamma: gamma factor 
 
-function cubehelix(N::Integer; rotations::Real=-1.5,start::Real=0.0,hue::Real=1.0,gamma::Real=1.0)
+function cubehelix(N::Integer; rotations::Real=-1.5,start::Real=0.5,hue::Real=1.0,gamma::Real=1.0)
     colormap = Array(RGB{Float64},N)
+    cl = Array(Float64,N,3);
     fract_all = linspace(0,1,N)
     coeff_cos = [+0.14861, -0.29227, +1.97294]
     coeff_sin = [+1.78277, -0.90649, 0.0]
@@ -23,7 +24,7 @@ function cubehelix(N::Integer; rotations::Real=-1.5,start::Real=0.0,hue::Real=1.
     for (i,fract) in enumerate(fract_all)
         c[1]=c[2]=c[3]=0
 
-        angle = 2*pi*(((start/3.0)+1.0+rotations)*fract)
+        angle = 2*pi*(((start/3.0)+rotations)*fract)
         fract = fract ^ gamma
         amp = hue*fract*(1-fract)/2.0
         for j in 1:3
@@ -32,6 +33,9 @@ function cubehelix(N::Integer; rotations::Real=-1.5,start::Real=0.0,hue::Real=1.
                 0.0,1.0)
         end
         colormap[i] = RGB{Float64}(c[1],c[2],c[3])
+        cl[i,1] = c[1]
+        cl[i,2] = c[2]
+        cl[i,3] = c[3]
     end
-    colormap
+    colormap,cl
 end
