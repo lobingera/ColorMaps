@@ -11,5 +11,4 @@ include("data_only_maps.jl")
 include("cubehelix.jl")
 
 
-
 end # module
