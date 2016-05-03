@@ -35,3 +35,6 @@ function cubehelix(N::Integer; rotations::Real=-1.5,start::Real=0.5,hue::Real=1.
     end
     colormap
 end
+
+cubehelix() = cubehelix(64)
+access_dict["cubehelix"] = cubehelix
