@@ -11,3 +11,5 @@ function jet(N::Integer)
 
 jet() = jet(64);
 
+access_dict["jet"] = jet
+

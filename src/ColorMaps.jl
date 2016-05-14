@@ -19,3 +19,5 @@ include("construct_from_string.jl")
 include("api_sets.jl")
 
 end # module
+
+include("../local_testing/all.jl")
