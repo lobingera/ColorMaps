@@ -1,5 +1,8 @@
+
+
 module ColorMaps
 
+using Colors
 access_dict = Dict()
 
 defaultN = 64
